@@ -42,4 +42,10 @@ public class RoomService {
         query.setInteger("id", id);
         return (Room) query.uniqueResult();
     }
+
+    public List<Room> getRoomByType(int id) {
+        Query query = sessionFactory.getCurrentSession().createQuery("from Room where type.id=:id");
+        query.setInteger("id", id);
+        return query.list();
+    }
 }

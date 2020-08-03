@@ -24,6 +24,12 @@ public class RoomController {
         return roomService.getRoomByID(id);
     }
 
+    @RequestMapping(path = "rooms/type/{id}", method = RequestMethod.GET)
+    public List<Room> getRoomByType(@PathVariable int id) {
+        return roomService.getRoomByType(id);
+    }
+
+
     @RequestMapping(path = "rooms/{id}", method = RequestMethod.DELETE)
     public int deleteRoom(@PathVariable int id) {
         return roomService.deleteRoom(id);
