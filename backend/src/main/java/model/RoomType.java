@@ -2,13 +2,9 @@ package model;
 
 import javax.persistence.*;
 
-/**
- * Created by CoT on 10/14/17.
- */
-
 @Entity
-@Table(name = "product")
-public class Product {
+@Table(name = "roomtype")
+public class RoomType {
 
     @Id
     @Column
@@ -17,9 +13,6 @@ public class Product {
 
     @Column
     private String name;
-
-    public Product() {
-    }
 
     public int getId() {
         return id;
