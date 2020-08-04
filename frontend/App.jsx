@@ -3,6 +3,7 @@ import TopNav from './TopNav.jsx'
 import TopNavAd from './TopNavAd.jsx'
 import Admin from './Admin.jsx'
 import Login from './Login.jsx'
+import Register from './Register.jsx'
 import Footer from './Footer.jsx'
 import Homepage from './Homepage.jsx'
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
@@ -65,11 +66,11 @@ export default class App extends React.Component{
                                 <div className="col-md-1"></div>
                             </div>
                             <Switch>
-                                <Route path="/" component={Homepage} />
+                                <Route exact path="/" component={Homepage} />
                                 <Route path="/Login" component={Login} />
+                                <Route path="/Register" component={Register} />
                                 <Route path="/Home" component={Homepage} />
                             </Switch>
-                            {/* <Login></Login> */}
                             <Footer></Footer>
                         </BrowserRouter>
                     </div>

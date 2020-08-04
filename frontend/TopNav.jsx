@@ -1,6 +1,8 @@
 import React from 'react'
 import Admin from './Admin.jsx'
 import Homepage from './Homepage.jsx'
+import Login from './Login.jsx'
+import Register from './Register.jsx'
 import { Link } from 'react-router-dom'
 
 /* Add an goldenrod background color to the top navigation bar */

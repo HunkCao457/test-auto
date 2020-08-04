@@ -1,5 +1,29 @@
 import React from 'react'
- 
+
+var colCentered = {
+    float: 'none',
+    margin: '0 auto'
+}
+
+/* Make the "Login" button bold */
+var login_button = {
+    fontWeight: 'bold',
+    width: '150px',
+    float: 'none',
+    margin: '0 auto',
+    fontSize: '24px',
+    backgroundColor: 'goldenrod',
+    color: 'black'
+}
+
+function hoverButtonColorOn(e) {
+    e.target.style.background = '#c4941c';
+}
+
+function hoverButtonColorOff(e) {
+    e.target.style.background = 'goldenrod';
+}
+
 export default class Login extends React.Component{
  
     constructor(){
@@ -56,7 +80,11 @@ export default class Login extends React.Component{
             Password:<input type='password' className="form-control" id='password' name='password' value={this.state.password}
               onChange={this.changeHanlder.bind(this)}/>
             <br/>
-            <button className="btn btn-primary" id="crud-button-2" onClick={this.login.bind(this)}>Login</button>
+            <button className="btn btn-primary" onClick={this.login.bind(this)}
+                    onMouseOver={hoverButtonColorOn} onMouseOut={hoverButtonColorOff} 
+                    style={login_button} title="Sign in with your account" >
+                        Log in
+                    </button>
         </div>
        
         )
