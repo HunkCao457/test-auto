@@ -4,17 +4,17 @@ import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 
 var colCentered = {
     float: 'none',
-    margin: '0 auto'
+    margin: '25px auto'
 }
 
 /* Make the "Book a room" button bold */
 var book_button = {
     fontWeight: 'bold',
     width: '200px',
-    margin: 'auto',
+    // margin: 'auto',
     fontSize: '24px',
     backgroundColor: 'goldenrod',
-    color: 'black'
+    color: 'black',
 }
 
 function hoverButtonColorOn(e) {
@@ -36,20 +36,29 @@ export default class Homepage extends React.Component {
                     <h1 style={colCentered}>HOTELS & RESORTS</h1>
                 </div>
                 <div className="row">
-                    <br/>
-                    <img src="Ritz-Carlton.jpg" alt="pool-picture"></img>
+                    {/* Indent */}
+                    <div className="col-md-1"></div> 
+                    <div className="col-md-10"> 
+                        <br/>
+                        <img src="Ritz-Carlton.jpg" alt="pool-picture"></img>
+                        <br/>
+                    </div>
+                    {/* Indent */}
+                    <div className="col-md-1"></div> 
+                </div>
+                <div className="row" >
+                    <div style={colCentered}>
+                        <Link to="/Rooms">
+                            <button className="btn btn-primary" 
+                            onMouseOver={hoverButtonColorOn} onMouseOut={hoverButtonColorOff} 
+                            style={book_button} title="Reserve a room">
+                                BOOK A ROOM
+                            </button>
+                        </Link>
+                    </div>
                     <br/>
                 </div>
                 <div className="row">
-                    <button href="BookingForm.jsx" className="btn btn-primary" 
-                    onMouseOver={hoverButtonColorOn} onMouseOut={hoverButtonColorOff} 
-                    style={book_button} title="Reserve a room">
-                        BOOK A ROOM
-                    </button>
-                    <br/>
-                </div>
-                <div className="row">
-                    <br/>
                     <br/>
                     <br/>
                     <h4 style={{margin: "auto", fontFamily: "Times New Roman, Times, serif", fontStyle: "italic"}}>

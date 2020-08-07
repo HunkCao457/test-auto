@@ -10,7 +10,7 @@ var login_button = {
     fontWeight: 'bold',
     width: '150px',
     float: 'none',
-    margin: '0 auto',
+    margin: '25px auto',
     fontSize: '24px',
     backgroundColor: 'goldenrod',
     color: 'black'
@@ -41,7 +41,7 @@ export default class Login extends React.Component{
     login(){
  
         var user = {username: this.state.username, password: this.state.password}
-        fetch('http://localhost:3000/login', {
+        fetch('http://localhost:8080/login', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',

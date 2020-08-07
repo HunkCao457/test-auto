@@ -5,12 +5,12 @@ var colCentered = {
     margin: '0 auto'
 }
 
-/* Make the "Register" button bold */
-var register_button = {
+/* Make the button bold */
+var book_button = {
     fontWeight: 'bold',
     width: '300px',
     float: 'none',
-    margin: '25px auto',
+    margin: '0 auto',
     fontSize: '24px',
     backgroundColor: 'goldenrod',
     color: 'black'
@@ -24,31 +24,56 @@ function hoverButtonColorOff(e) {
     e.target.style.background = 'goldenrod';
 }
 
-export default class Register extends React.Component{
+export default class BookingPage extends React.Component{
  
     constructor(){
         super()
         this.state = {
-            customerAccounts: [],
-            // id: '',
-            name: '', 
-            password: '',
-            phone: '',
+            bookings: [],
+            // customeraccounts: [],
+            rooms: [],
+            bookings: [],
+            id: '',
+            name: '',
+            pass: '',
             email: '',
-            creditCard: '',
+            room:'',
+            roomId: '',
+            roomType: '',
+            request: '',
         }
     }
 
-    fetchCustomerAccounts() {
-        var url = 'http://localhost:8080/customeraccounts/all'
+    // this.props.match.params.roomId
+
+    fetchBookings() {
+        var url = 'http://localhost:8080/bookings/all'
         fetch(url)
         .then(res=>res.json())
         .then(json=>
-            this.setState({ customerAccounts: json }) )
+            this.setState({ bookings: json }) )
     }
 
+    // fetchCustomerAccounts() {
+    //     var url = 'http://localhost:8080/customeraccounts/all'
+    //     fetch(url)
+    //     .then(res=>res.json())
+    //     .then(json=>
+    //         this.setState({ customeraccounts: json }) )
+    // }
+
+    // fetchRooms() {
+    //     var url = 'http://localhost:8080/rooms/all'
+    //     fetch(url)
+    //     .then(res=>res.json())
+    //     .then(json=>
+    //         this.setState({ rooms: json }) )
+    // }
+
     componentDidMount() {
-        this.fetchCustomerAccounts()
+        this.fetchBookings()
+        // this.fetchCustomerAccounts()
+        // this.fetchRooms()
     }
 
     handleChange(e) {
@@ -57,39 +82,35 @@ export default class Register extends React.Component{
         this.setState(obj)
     }
     
-    addCustomerAccount() {
+    add() {
         var methodVar = 'post'
-            var url = 'http://localhost:8080/customeraccounts';
+            var url = 'http://localhost:8080/bookings';
         fetch(url, {
             method: methodVar,
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Postman-Token': '<calculated when request is sent>',
-                'Content-Length': '<calculated when request is sent>',
-                'Host': '<calculated when request is sent>',
-                'User-Agent': 'PostmanRuntime/7.26.2',
-                'Accept-Encoding': 'gzip, deflate, br',
-                'Connection': 'keep-alive'
+                'Accept': 'application/json'
             },
             body: JSON.stringify({
                 name: this.state.name,
                 password: this.state.password,
                 phone: this.state.phone,
                 email: this.state.email,
-                creditCard: this.state.creditCard
+                room: {
+                    id: this.props.match.params.roomId
+                },
+                request: this.state.request,
             })
         })
             .then(res => res.json())
-            .then(json => this.fetchCustomerAccounts())
-            .then(console.log("account added"))
+            .then(json => this.fetchBookings())
     }
  
     render(){
         return(
         <div className="container">
             <br/>
-            <h2>Register</h2>
+            <h2>Booking form</h2>
             <br/>
             Full name:<input type='text' className="form-control" id='name' name='name' value={this.state.name}
             onChange={this.handleChange.bind(this)}/>
@@ -104,15 +125,21 @@ export default class Register extends React.Component{
               pattern = "[\d]{6,15}" title = "Phone number must include between 6-15 digits."
               onChange={this.handleChange.bind(this)}/>
             <br/>
-            Credit card number:<input type='tel' className="form-control" id='creditCard' name='creditCard' value={this.state.creditCard}
-              pattern = "[\d]{16}" title = "Credit card number must include 16 digits."
+            Other requests:<input type='text' className="form-control" id='request' name='request' value={this.state.request}
               onChange={this.handleChange.bind(this)}/>
             <br/>
-            <button className="btn btn-primary" onClick={this.addCustomerAccount.bind(this)}
+            
+            {/* Credit card number:<input type='tel' className="form-control" id='creditCard' name='creditCard' value={this.state.creditCard}
+              pattern = "[\d]{16}" title = "Credit card number must include 16 digits."
+              onChange={this.handleChange.bind(this)}/>
+            <br/> */}
+            <button className="btn btn-primary" onClick={this.add.bind(this)}
                     onMouseOver={hoverButtonColorOn} onMouseOut={hoverButtonColorOff} 
-                    style={register_button} title="Create a new account" >
-                        Create a new account
-                    </button>
+                    style={book_button} title="Confirm booking" >
+                        Confirm booking
+            </button>
+            <br/>
+            <br/>
         </div>
        
         )

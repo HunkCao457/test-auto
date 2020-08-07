@@ -7,7 +7,7 @@ var footer = {
     paddingTop: '10px',
     paddingBottom: '15px',
     color: 'black',
-    position: 'absolute',
+    // position: 'fixed',
     left: '0',
     bottom: '0',
     width: '100%',

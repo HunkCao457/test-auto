@@ -6,7 +6,9 @@ import Login from './Login.jsx'
 import Register from './Register.jsx'
 import Footer from './Footer.jsx'
 import Homepage from './Homepage.jsx'
+import Rooms from './Rooms.jsx'
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
+import BookingPage from './BookingPage.jsx'
 
 
 export default class App extends React.Component{
@@ -70,6 +72,8 @@ export default class App extends React.Component{
                                 <Route path="/Login" component={Login} />
                                 <Route path="/Register" component={Register} />
                                 <Route path="/Home" component={Homepage} />
+                                <Route path="/Rooms" component={Rooms} />
+                                <Route path="/BookingPage/:roomId" component={BookingPage} />
                             </Switch>
                             <Footer></Footer>
                         </BrowserRouter>

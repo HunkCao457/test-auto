@@ -28,7 +28,7 @@ export default class Admin extends React.Component {
     }
 
     fetchProjects() {
-        var url = 'http://localhost:9000/api/projects'
+        var url = 'http://localhost:8080/api/projects'
         fetch(url)
         .then(res=>res.json())
         .then(json=>
@@ -48,9 +48,9 @@ export default class Admin extends React.Component {
     save() {
         var methodVar = this.state.addNew ? 'post' : 'put'
         if (methodVar == 'post') {
-            var url = 'http://localhost:9000/api/project/create';
+            var url = 'http://localhost:8080/api/project/create';
         } else if (methodVar == 'put') {
-            var url = 'http://localhost:9000/api/project/' + this.state.id;
+            var url = 'http://localhost:8080/api/project/' + this.state.id;
         }
         // var url = 'http://localhost:9000/api/projects'
         fetch(url, {
@@ -110,7 +110,7 @@ export default class Admin extends React.Component {
     }
 
     delete(id) {
-        var url = 'http://localhost:9000/api/project'
+        var url = 'http://localhost:8080/api/project'
         fetch(url + "/" + id, {
             method: "delete"
         })
