@@ -11,6 +11,7 @@ var footer = {
     left: '0',
     bottom: '0',
     width: '100%',
+    marginTop: '75px',
     fontFamily: "Times New Roman, Times, serif"
 }
 

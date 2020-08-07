@@ -47,7 +47,9 @@ export default class Rooms extends React.Component{
         var url = 'http://localhost:8080/rooms/all'
         fetch(url)
             .then(res => res.json())
-            .then(json => this.setState({ rooms: json }))
+            .then(json => this.setState({ rooms: json
+                .filter(r=>Boolean(r.booked) == false) 
+            }) )
             // .then(console.log(this.state.rooms))
     }
 
@@ -96,7 +98,7 @@ export default class Rooms extends React.Component{
                     <tbody>
                         {this.state.rooms.map(r =>
                             <tr>
-                                <td>{r.number}</td>
+                                <td style={{fontWeight:"bold"}}>{r.number}</td>
                                 <td>{r.floor}</td>
                                 <td>
                                     {r.type.name}
@@ -104,13 +106,13 @@ export default class Rooms extends React.Component{
                                 <td>{r.wifi}</td>
                                 <td>{r.smoking}</td>
                                 <td>
-                                <Link to={"/BookingPage/" + r.id}>
-                                    <button className="btn btn-primary" 
-                                    onMouseOver={hoverButtonColorOn} onMouseOut={hoverButtonColorOff} 
-                                    style={book_button} title="Book this room">
-                                        Book
-                                    </button>
-                                </Link>
+                                    <Link to={"/BookingPage/" + r.id}>
+                                        <button className="btn btn-primary" 
+                                        onMouseOver={hoverButtonColorOn} onMouseOut={hoverButtonColorOff} 
+                                        style={book_button} title="Book this room">
+                                            Book
+                                        </button>
+                                    </Link>
                                 </td>
                                 {/* if not booked, put "Book" button
                                     if booked, put "Booked" */}

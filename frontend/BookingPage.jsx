@@ -31,16 +31,20 @@ export default class BookingPage extends React.Component{
         this.state = {
             bookings: [],
             // customeraccounts: [],
-            rooms: [],
-            bookings: [],
+            
             id: '',
             name: '',
             pass: '',
             email: '',
-            room:'',
-            roomId: '',
-            roomType: '',
+            phone: '',
             request: '',
+            rooms: {},
+            roomTypeId: '',
+            roomTypeName: '',
+            number: '',
+            wifi: '',
+            somoking: '',
+            floor: ''
         }
     }
 
@@ -62,18 +66,19 @@ export default class BookingPage extends React.Component{
     //         this.setState({ customeraccounts: json }) )
     // }
 
-    // fetchRooms() {
-    //     var url = 'http://localhost:8080/rooms/all'
-    //     fetch(url)
-    //     .then(res=>res.json())
-    //     .then(json=>
-    //         this.setState({ rooms: json }) )
-    // }
+    
+
+    fetchRooms() {
+        var url = 'http://localhost:8080/rooms/'
+        fetch(url + this.props.match.params.roomId)
+        .then(res=>res.json())
+        .then(json=> this.setState({ rooms: json }) )
+    }
 
     componentDidMount() {
         this.fetchBookings()
         // this.fetchCustomerAccounts()
-        // this.fetchRooms()
+        this.fetchRooms()
     }
 
     handleChange(e) {
@@ -82,14 +87,19 @@ export default class BookingPage extends React.Component{
         this.setState(obj)
     }
     
-    add() {
+    addBooking() {
+        // POST new booking data
+
         var methodVar = 'post'
             var url = 'http://localhost:8080/bookings';
         fetch(url, {
             method: methodVar,
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                // 'Access-Control-Allow-Origin': 'http://localhost:8080',
+                // 'Access-Control-Allow-Credentials': 'true',
+                // 'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS'
             },
             body: JSON.stringify({
                 name: this.state.name,
@@ -104,6 +114,35 @@ export default class BookingPage extends React.Component{
         })
             .then(res => res.json())
             .then(json => this.fetchBookings())
+        
+        // update (PUT) room status (booked: true)
+
+        var methodVar2 = 'put'
+            var url2 = 'http://localhost:8080/rooms';
+        fetch(url2, {
+            method: methodVar2,
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                // 'Access-Control-Allow-Origin': 'http://localhost:8080',
+                // 'Access-Control-Allow-Credentials': 'true',
+                // 'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS'
+            },
+            body: JSON.stringify({
+                id: this.props.match.params.roomId,
+                type: {
+                    id: this.state.rooms.type.id,
+                    name: this.state.rooms.type.name
+                },
+                number: this.state.rooms.number,
+                wifi: this.state.rooms.wifi,
+                smoking: this.state.rooms.smoking,
+                floor: this.state.rooms.floor,
+                booked: true
+            })
+        })
+            .then(res => res.json())
+            .then(json => this.fetchRooms())
     }
  
     render(){
@@ -122,7 +161,8 @@ export default class BookingPage extends React.Component{
               onChange={this.handleChange.bind(this)}/>
             <br/>
             Phone number:<input type='tel' className="form-control" id='phone' name='phone' value={this.state.phone}
-              pattern = "[\d]{6,15}" title = "Phone number must include between 6-15 digits."
+            //   pattern = "[\d]{6,15}" 
+              title = "Phone number must include between 6-15 digits."
               onChange={this.handleChange.bind(this)}/>
             <br/>
             Other requests:<input type='text' className="form-control" id='request' name='request' value={this.state.request}
@@ -133,7 +173,8 @@ export default class BookingPage extends React.Component{
               pattern = "[\d]{16}" title = "Credit card number must include 16 digits."
               onChange={this.handleChange.bind(this)}/>
             <br/> */}
-            <button className="btn btn-primary" onClick={this.add.bind(this)}
+            <button className="btn btn-primary" 
+                    onClick={this.addBooking.bind(this)}
                     onMouseOver={hoverButtonColorOn} onMouseOut={hoverButtonColorOff} 
                     style={book_button} title="Confirm booking" >
                         Confirm booking
