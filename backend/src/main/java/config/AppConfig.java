@@ -40,7 +40,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         //For mysql
         //properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         properties.put("hibernate.show_sql", true);
-        properties.put("hibernate.hbm2ddl.auto", "create-drop");
+        properties.put("hibernate.hbm2ddl.auto", "update");
 
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
 
@@ -50,7 +50,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         dataSource.setDriverClassName("org.postgresql.Driver");
         dataSource.setUrl("jdbc:postgresql://localhost:5432/SEPT2020");
         dataSource.setUsername("postgres");
-        dataSource.setPassword("025861223");
+        dataSource.setPassword("7RANca7DUY");
 
         sessionFactoryBean.setDataSource(dataSource);
         sessionFactoryBean.setHibernateProperties(properties);

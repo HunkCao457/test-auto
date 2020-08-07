@@ -7,13 +7,14 @@ import service.CustomerService;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "/")
 public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
-
+    
     @RequestMapping(path = "customeraccounts/all", method = RequestMethod.GET)
     public List<CustomerAccount> getAllCustomerAccounts() {
         return customerService.getAllCustomerAccounts();

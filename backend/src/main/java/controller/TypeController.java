@@ -7,13 +7,14 @@ import service.TypeService;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "/")
 public class TypeController {
 
     @Autowired
     private TypeService typeService;
-
+    
     @RequestMapping(path = "roomtypes/all", method = RequestMethod.GET)
     public List<RoomType> getAllRoomTypes() {
         return typeService.getAllRoomTypes();

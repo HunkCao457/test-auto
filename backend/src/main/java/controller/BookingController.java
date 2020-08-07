@@ -7,13 +7,14 @@ import service.BookingService;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "/")
 public class BookingController {
 
     @Autowired
     private BookingService bookingService;
-
+    
     @RequestMapping(path = "bookings/all", method = RequestMethod.GET)
     public List<Booking> getAllBookings() {
         return bookingService.getAllBookings();

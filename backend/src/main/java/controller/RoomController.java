@@ -7,13 +7,14 @@ import service.RoomService;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "/")
 public class RoomController {
 
     @Autowired
     private RoomService roomService;
-
+    
     @RequestMapping(path = "rooms/all", method = RequestMethod.GET)
     public List<Room> getAllRooms() {
         return roomService.getAllRooms();
