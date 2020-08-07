@@ -26,6 +26,9 @@ public class Room {
     @Column
     private String floor;
 
+    @Column
+    private boolean isBooked;
+
     public int getId() {
         return id;
     }
@@ -72,5 +75,13 @@ public class Room {
 
     public void setFloor(String floor) {
         this.floor = floor;
+    }
+
+    public boolean isBooked() {
+        return isBooked;
+    }
+
+    public void setBooked(boolean booked) {
+        isBooked = booked;
     }
 }
