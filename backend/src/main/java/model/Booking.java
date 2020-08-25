@@ -11,17 +11,8 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column
-    private String name;
-
-    @Column
-    private String password;
-
-    @Column
-    private String phone;
-
-    @Column
-    private String email;
+    @OneToOne
+    private CustomerAccount customer;
 
     @OneToOne
     private Room room;
@@ -53,35 +44,11 @@ public class Booking {
         this.request = request;
     }
 
-    public String getName() {
-        return name;
+    public CustomerAccount getCustomer() {
+        return customer;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCustomer(CustomerAccount customer) {
+        this.customer = customer;
     }
 }

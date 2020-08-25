@@ -44,19 +44,19 @@ public class BookingService {
     }
 
     public List<Booking> getBookingByPhone(String phone) {
-        Query query = sessionFactory.getCurrentSession().createQuery("from Booking b where b.phone like :phone");
+        Query query = sessionFactory.getCurrentSession().createQuery("from Booking b where customer.phone like :phone");
         query.setString("phone", "%"+phone+"%");
         return query.list();
     }
 
     public List<Booking> getBookingByName(String name) {
-        Query query = sessionFactory.getCurrentSession().createQuery("from Booking b where b.name like :name");
+        Query query = sessionFactory.getCurrentSession().createQuery("from Booking b where customer.name like :name");
         query.setString("name", "%"+name+"%");
         return query.list();
     }
 
     public List<Booking> getBookingByEmail(String email) {
-        Query query = sessionFactory.getCurrentSession().createQuery("from Booking b where b.email like :email");
+        Query query = sessionFactory.getCurrentSession().createQuery("from Booking b where customer.email like :email");
         query.setString("email", "%"+email+"%");
         return query.list();
     }
