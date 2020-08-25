@@ -18,10 +18,10 @@ public class Room {
     private String number;
 
     @Column
-    private String wifi;
+    private boolean wifi;
 
     @Column
-    private String smoking;
+    private boolean smoking;
 
     @Column
     private String floor;
@@ -53,19 +53,19 @@ public class Room {
         this.number = number;
     }
 
-    public String getWifi() {
+    public boolean isWifi() {
         return wifi;
     }
 
-    public void setWifi(String wifi) {
+    public void setWifi(boolean wifi) {
         this.wifi = wifi;
     }
 
-    public String getSmoking() {
+    public boolean isSmoking() {
         return smoking;
     }
 
-    public void setSmoking(String smoking) {
+    public void setSmoking(boolean smoking) {
         this.smoking = smoking;
     }
 

@@ -48,4 +48,16 @@ public class RoomService {
         query.setInteger("id", id);
         return query.list();
     }
+
+    public List<Room> getRoomByWifi(boolean wifi) {
+        Query query = sessionFactory.getCurrentSession().createQuery("from Room where wifi=:wifi");
+        query.setBoolean("wifi", wifi);
+        return query.list();
+    }
+
+    public List<Room> getRoomBySmoking(boolean smoking) {
+        Query query = sessionFactory.getCurrentSession().createQuery("from Room where smoking=:smoking");
+        query.setBoolean("smoking", smoking);
+        return query.list();
+    }
 }

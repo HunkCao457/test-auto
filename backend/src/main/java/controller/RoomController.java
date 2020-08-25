@@ -30,6 +30,15 @@ public class RoomController {
         return roomService.getRoomByType(id);
     }
 
+    @RequestMapping(path = "rooms/wifi/{wifi}", method = RequestMethod.GET)
+    public List<Room> getRoomByWifi(@PathVariable boolean wifi) {
+        return roomService.getRoomByWifi(wifi);
+    }
+
+    @RequestMapping(path = "rooms/smoking/{smoking}", method = RequestMethod.GET)
+    public List<Room> getRoomBySmoking(@PathVariable boolean smoking) {
+        return roomService.getRoomBySmoking(smoking);
+    }
 
     @RequestMapping(path = "rooms/{id}", method = RequestMethod.DELETE)
     public int deleteRoom(@PathVariable int id) {
