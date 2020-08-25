@@ -40,13 +40,14 @@ export default class Homepage extends React.Component {
                     <div className="col-md-1"></div> 
                     <div className="col-md-10"> 
                         <br/>
-                        <img src="Ritz-Carlton.jpg" alt="pool-picture"></img>
+                        <img src="Ritz-Carlton.jpg" style={{width:"100%"}} alt="pool-picture"></img>
                         <br/>
                     </div>
                     {/* Indent */}
                     <div className="col-md-1"></div> 
                 </div>
-                <div className="row" >
+                <br/>
+                {/* <div className="row" >
                     <div style={colCentered}>
                         <Link to="/Rooms">
                             <button className="btn btn-primary" 
@@ -57,7 +58,7 @@ export default class Homepage extends React.Component {
                         </Link>
                     </div>
                     <br/>
-                </div>
+                </div> */}
                 <div className="row">
                     <br/>
                     <br/>
