@@ -151,21 +151,21 @@ export default class BookingPage extends React.Component{
             <br/>
             <h2>Booking form</h2>
             <br/>
-            Full name:<input type='text' className="form-control" id='name' name='name' value={this.state.name}
+            Full name:<input type='text' className="form-control" id='name' name='name' value={this.state.name} required
             onChange={this.handleChange.bind(this)}/>
             <br/>
-            Email:<input type='email' className="form-control" id='email' name='email' value={this.state.email}
+            Email:<input type='email' className="form-control" id='email' name='email' value={this.state.email} required
               onChange={this.handleChange.bind(this)}/>
             <br/>
-            Password:<input type='password' className="form-control" id='password' name='password' value={this.state.password}
+            Password:<input type='password' className="form-control" id='password' name='password' value={this.state.password} required
               onChange={this.handleChange.bind(this)}/>
             <br/>
-            Phone number:<input type='tel' className="form-control" id='phone' name='phone' value={this.state.phone}
-            //   pattern = "[\d]{6,15}" 
+            Phone number:<input type='tel' className="form-control" id='phone' name='phone' value={this.state.phone} required
+              pattern = "[\d]{6,15}" 
               title = "Phone number must include between 6-15 digits."
               onChange={this.handleChange.bind(this)}/>
             <br/>
-            Other requests:<input type='text' className="form-control" id='request' name='request' value={this.state.request}
+            Other requests:<input type='text' className="form-control" id='request' name='request' value={this.state.request} required
               onChange={this.handleChange.bind(this)}/>
             <br/>
             
