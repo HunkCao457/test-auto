@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "room")
@@ -27,7 +28,10 @@ public class Room {
     private String floor;
 
     @Column
-    private boolean isBooked;
+    private int price;
+
+    @Column
+    private List<List<Object>> bookedDates;
 
     public int getId() {
         return id;
@@ -77,11 +81,19 @@ public class Room {
         this.floor = floor;
     }
 
-    public boolean isBooked() {
-        return isBooked;
+    public int getPrice() {
+        return price;
     }
 
-    public void setBooked(boolean booked) {
-        isBooked = booked;
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public List<List<Object>> getBookedDates() {
+        return bookedDates;
+    }
+
+    public void setBookedDates(List<List<Object>> bookedDates) {
+        this.bookedDates = bookedDates;
     }
 }

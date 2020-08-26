@@ -14,6 +14,10 @@ public class RoomType {
     @Column
     private String name;
 
+    public RoomType(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }

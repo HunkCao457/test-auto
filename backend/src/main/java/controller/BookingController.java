@@ -41,7 +41,7 @@ public class BookingController {
     }
 
     @RequestMapping(path = "bookings/name", method = RequestMethod.GET)
-    public List<Booking> getBooking(@RequestParam(required = false) String s){
+    public List<Booking> getBookingByName(@RequestParam(required = false) String s){
         return bookingService.getBookingByName(s);
     }
 
