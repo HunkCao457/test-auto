@@ -31,7 +31,6 @@ export default class Homepage extends React.Component {
 
         return (
             <div>
-                <br/>
                 <div className="row">
                     <h1 style={colCentered}>HOTELS & RESORTS</h1>
                 </div>
@@ -61,11 +60,9 @@ export default class Homepage extends React.Component {
                 </div> */}
                 <div className="row">
                     <br/>
-                    <br/>
                     <h4 style={{margin: "auto", fontFamily: "Times New Roman, Times, serif", fontStyle: "italic"}}>
                         "Why stay at some cheap motel when you can pay $500 for a room you only use for one night?" - Marriott Carlton, Founder of The Shitz-Carlton
                     </h4>
-                    <br/>
                 </div>
                 
             </div>

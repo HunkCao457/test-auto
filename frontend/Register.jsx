@@ -36,17 +36,19 @@ const formValid = ({ formErrors, name, password, email, phone, creditCard }) => 
   Object.values(formErrors).forEach(val => {
     val.length > 0 && (valid = false);
   });
-  name === null && (valid = false);
-  password === null && (valid = false);
-  email === null && (valid = false);
-  phone === null && (valid = false);
-  creditCard === null && (valid = false);
+  name === "" && (valid = false);
+  password === "" && (valid = false);
+  email === "" && (valid = false);
+  phone === "" && (valid = false);
+  creditCard === "" && (valid = false);
 
   return valid;
 }
 
 const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
 const numbersRegex = RegExp(/^\d+$/)
+const nameRegex = RegExp(/^[A-Z][a-zA-Z]{1,}(?: [A-Z][a-zA-Z]{1,}){1,}$/)
+
 export default class Register extends React.Component{
  
   constructor(){
@@ -99,16 +101,16 @@ export default class Register extends React.Component{
     switch (name) {
       case 'name':
         formErrors.name = 
-          value.length < 100 && value.length > 4
+          nameRegex.test(value) && value.length < 101 && value.length > 3
             ? ""
-            : "Name must include 4-100 characters";
+            : "Invalid name format/length. Make sure to cpaitalize first letter.";
         break;
 
       case 'email':
         formErrors.email = 
           emailRegex.test(value) && value.length > 0
             ? ""
-            : "Invalid email address";
+            : "Invalid email address format";
         break;
 
       case 'password':
@@ -120,16 +122,16 @@ export default class Register extends React.Component{
 
       case 'phone':
         formErrors.phone = 
-          numbersRegex.test(value) && value.length < 15 && value.length > 6
+          numbersRegex.test(value) && value.length < 16 && value.length > 5
             ? ""
-            : "Phone number must include 6-15 numbers from 0-9";
+            : "Phone number must include 6-15 numbers from 0-9 only";
         break;
 
       case 'creditCard':
         formErrors.creditCard = 
           numbersRegex.test(value) && value.length == 16
             ? ""
-            : "Credit card number must include 16 numbers from 0-9";
+            : "Credit card number must include 16 numbers from 0-9 only";
         break;
       default:
         break;
@@ -220,7 +222,7 @@ export default class Register extends React.Component{
           <form id="signup-form">
 
             <div className="input-field">
-              <label htmlFor="signup-name">Full name:</label>
+              <label htmlFor="signup-name">Full name (4-100 letters and spaces only):</label>
               <input type="text" id="signup-name" className="form-control" formNoValidate
               name="name" value={this.state.name} placeholder="Enter full name"
               onChange={this.changeHandler.bind(this)}/>
@@ -243,7 +245,7 @@ export default class Register extends React.Component{
             
             <br/>
             <div className="input-field">
-              <label htmlFor="signup-password">Password:</label>
+              <label htmlFor="signup-password">Password (8-32 characters):</label>
               <input type="password" id="signup-password" className="form-control" formNoValidate
               name="password" value={this.state.password} placeholder="Enter password"
               onChange={this.changeHandler.bind(this)}/>
@@ -255,7 +257,7 @@ export default class Register extends React.Component{
             
             <br/>
             <div className="input-field">
-              <label htmlFor="signup-phone">Phone number:</label>
+              <label htmlFor="signup-phone">Phone number (6-15 numbers from 0-9 only):</label>
               <input type="tel" id="signup-phone" className="form-control" formNoValidate
               name="phone" value={this.state.phone} placeholder="Enter phone number"
               onChange={this.changeHandler.bind(this)}/>
@@ -267,7 +269,7 @@ export default class Register extends React.Component{
             
             <br/>
             <div className="input-field">
-              <label htmlFor="signup-creditCard">Credit card number:</label>
+              <label htmlFor="signup-creditCard">Credit card number (16 numbers from 0-9 only):</label>
               <input type="tel" id="signup-creditCard" className="form-control" formNoValidate
               name="creditCard" value={this.state.creditCard} placeholder="Enter credit card number"
               onChange={this.changeHandler.bind(this)}/>
