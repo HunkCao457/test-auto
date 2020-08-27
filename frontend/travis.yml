@@ -1,3 +1,10 @@
-language: node_js
-node_js:
-  - 12.16.3
+language: java
+jdk: 
+ - openjdk10
+ - openjdk11 
+ os: 
+ - windows
+ dist:
+ - trusty
+ 
+ 
