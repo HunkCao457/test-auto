@@ -4,3 +4,10 @@ jdk:
  - openjdk10
  - openjdk11
  
+ os: 
+ - windows
+ 
+ dist:
+ - trusty
+ 
+ 
