@@ -1,7 +1,10 @@
 language: java
+os:
+ - windows
 jdk: 
- - openjdk10
- - openjdk11 
+ - openjdk14
+dist:
+ - trusty 
  
  
  
